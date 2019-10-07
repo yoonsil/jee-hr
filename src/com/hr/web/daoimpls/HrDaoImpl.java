@@ -18,16 +18,22 @@ public class HrDaoImpl implements HrDao{
 	private HrDaoImpl() {}
 
 	public void insertJoin(HrBean param) {
-		String sql = "INSERT INTO EMP (EMPNO, ENAME, JOB, DEPTNO)\r\n" + 
-				"VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO EMP (EMPNO, ENAME, JOB, DEPTNO, MGR, HIREDATE, SAL, COMM )\r\n" + 
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = DatabaseFactory.createDatabase(Constants.VENDOR)
 					.getConnection()
 					.prepareStatement(sql);
+			System.out.println("======"+param.toString());
 			stmt.setString(1, param.getEmpno());
 			stmt.setString(2, param.getEname());
 			stmt.setString(3, param.getJob());
 			stmt.setString(4, param.getDeptno());
+			stmt.setString(5, param.getMgr());
+			stmt.setString(6, param.getHiredate());
+			stmt.setString(7, param.getSal());
+			stmt.setString(8, param.getComm());
+			System.out.println(sql+"++++++++++++");
 			ResultSet rs = stmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();

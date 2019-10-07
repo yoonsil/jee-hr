@@ -19,6 +19,10 @@ public class JoinCommand extends Command{
 		param.setEmpno(request.getParameter("empno"));
 		param.setEname(request.getParameter("ename"));
 		param.setJob(request.getParameter("job"));
+		param.setMgr(request.getParameter("mgr"));
+		param.setHiredate(request.getParameter("hiredate"));
+		param.setSal(request.getParameter("sal"));
+		param.setComm(request.getParameter("comm"));
 		HrServiceImpl.getInstance().join(param);
 		super.execute();
 	}
